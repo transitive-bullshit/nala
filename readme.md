@@ -11,7 +11,7 @@
 
 ## Deploy your own
 
-This site was built by tweaking the [Next.js image gallery template](https://nextconf-images.vercel.app/).
+This site was built by tweaking the [Next.js image gallery template](https://vercel.com/templates/next.js/image-gallery-starter).
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application.)
 
