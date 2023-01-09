@@ -44,6 +44,8 @@ export default function SharedModal({
   })
 
   const currentImage = images ? images[index] : currentPhoto
+  const w = navigation ? 1280 : 1920
+  const h = (w / currentImage.width) * currentImage.height
 
   return (
     <MotionConfig
@@ -53,11 +55,11 @@ export default function SharedModal({
       }}
     >
       <div
-        className='relative z-50 flex aspect-[3/2] w-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto'
+        className='relative z-50 flex aspect-[3/2] w-full h-full max-w-7xl items-center wide:h-full xl:taller-than-854:h-auto'
         {...handlers}
       >
         {/* Main image */}
-        <div className='w-full overflow-hidden'>
+        <div className='w-full h-full overflow-hidden'>
           <div className='relative flex aspect-[3/2] items-center justify-center'>
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -67,7 +69,7 @@ export default function SharedModal({
                 initial='enter'
                 animate='center'
                 exit='exit'
-                className='absolute'
+                className='absolute w-full h-full'
               >
                 <Image
                   src={`https://res.cloudinary.com/${
@@ -75,8 +77,8 @@ export default function SharedModal({
                   }/image/upload/c_scale,${navigation ? 'w_1280' : 'w_1920'}/${
                     currentImage.public_id
                   }.${currentImage.format}`}
-                  width={navigation ? 1280 : 1920}
-                  height={navigation ? 853 : 1280}
+                  fill
+                  className='object-contain'
                   placeholder='blur'
                   blurDataURL={currentImage.blurDataUrl}
                   priority

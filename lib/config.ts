@@ -26,3 +26,4 @@ export const apiBaseUrl =
 export const socialImageUrl = `${url}/social.jpg`
 
 export const alt = 'Nala'
+export const maxImages = 500

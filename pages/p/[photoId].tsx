@@ -1,6 +1,7 @@
 import type { GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 
+import * as config from '@/lib/config'
 import Carousel from '@/components/Carousel'
 import { PageHead } from '@/components/PageHead'
 import getResults from '@/lib/cachedImages'
@@ -12,6 +13,10 @@ const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter()
   const { photoId } = router.query
   const index = Number(photoId)
+
+  if (!currentPhoto || isNaN(index)) {
+    return null
+  }
 
   const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
 
@@ -60,7 +65,7 @@ export async function getStaticPaths() {
   const results = await cloudinary.v2.search
     .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
     .sort_by('public_id', 'desc')
-    .max_results(400)
+    .max_results(config.maxImages)
     .execute()
 
   const fullPaths = []

@@ -1,7 +1,7 @@
 export interface ImageProps {
   id: number
-  width: string
-  height: string
+  width: number
+  height: number
   public_id: string
   format: string
   blurDataUrl?: string

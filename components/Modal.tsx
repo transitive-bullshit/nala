@@ -1,7 +1,7 @@
+import * as React from 'react'
 import { Dialog } from '@headlessui/react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
-import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
 
 import type { ImageProps } from '@/lib/types'
@@ -15,37 +15,40 @@ export default function Modal({
   images: ImageProps[]
   onClose?: () => void
 }) {
-  const overlayRef = useRef()
+  const overlayRef = React.useRef()
   const router = useRouter()
 
   const { photoId } = router.query
   const index = Number(photoId)
 
-  const [direction, setDirection] = useState(0)
-  const [curIndex, setCurIndex] = useState(index)
+  const [direction, setDirection] = React.useState(0)
+  const [curIndex, setCurIndex] = React.useState(index)
 
-  function handleClose() {
+  const handleClose = React.useCallback(() => {
     router.push('/', undefined, { shallow: true })
     onClose()
-  }
+  }, [onClose, router])
 
-  function changePhotoId(newVal: number) {
-    if (newVal > index) {
-      setDirection(1)
-    } else {
-      setDirection(-1)
-    }
+  const changePhotoId = React.useCallback(
+    (newVal: number) => {
+      if (newVal > index) {
+        setDirection(1)
+      } else {
+        setDirection(-1)
+      }
 
-    setCurIndex(newVal)
+      setCurIndex(newVal)
 
-    router.push(
-      {
-        query: { photoId: newVal }
-      },
-      `/p/${newVal}`,
-      { shallow: true }
-    )
-  }
+      router.push(
+        {
+          query: { photoId: newVal }
+        },
+        `/p/${newVal}`,
+        { shallow: true }
+      )
+    },
+    [index, router]
+  )
 
   useKeypress('ArrowRight', () => {
     if (index + 1 < images.length) {
