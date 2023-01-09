@@ -3,12 +3,13 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
+
+import type { ImageProps } from '../lib/types'
 import SharedModal from './SharedModal'
 
 export default function Modal({
   images,
-  onClose,
+  onClose
 }: {
   images: ImageProps[]
   onClose?: () => void
@@ -36,7 +37,7 @@ export default function Modal({
     setCurIndex(newVal)
     router.push(
       {
-        query: { photoId: newVal },
+        query: { photoId: newVal }
       },
       `/p/${newVal}`,
       { shallow: true }
@@ -61,13 +62,13 @@ export default function Modal({
       open={true}
       onClose={handleClose}
       initialFocus={overlayRef}
-      className="fixed inset-0 z-10 flex items-center justify-center"
+      className='fixed inset-0 z-10 flex items-center justify-center'
     >
       <Dialog.Overlay
         ref={overlayRef}
         as={motion.div}
-        key="backdrop"
-        className="fixed inset-0 z-30 bg-black/70 backdrop-blur-2xl"
+        key='backdrop'
+        className='fixed inset-0 z-30 bg-black/70 backdrop-blur-2xl'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />

@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useKeypress from 'react-use-keypress'
-import type { ImageProps } from '../utils/types'
-import { useLastViewedPhoto } from '../utils/useLastViewedPhoto'
+
+import type { ImageProps } from '../lib/types'
+import { useLastViewedPhoto } from '../lib/useLastViewedPhoto'
 import SharedModal from './SharedModal'
 
 export default function Carousel({
   index,
-  currentPhoto,
+  currentPhoto
 }: {
   index: number
   currentPhoto: ImageProps
@@ -29,15 +30,15 @@ export default function Carousel({
   })
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
+    <div className='fixed inset-0 flex items-center justify-center'>
       <button
-        className="absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl"
+        className='absolute inset-0 z-30 cursor-default bg-black backdrop-blur-2xl'
         onClick={closeModal}
       >
         <Image
           src={currentPhoto.blurDataUrl}
-          className="pointer-events-none h-full w-full"
-          alt="blurred background"
+          className='pointer-events-none h-full w-full'
+          alt='blurred background'
           fill
           priority={true}
         />

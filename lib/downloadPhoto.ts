@@ -11,9 +11,9 @@ export default function downloadPhoto(url: string, filename: string) {
   if (!filename) filename = url.split('\\').pop().split('/').pop()
   fetch(url, {
     headers: new Headers({
-      Origin: location.origin,
+      Origin: location.origin
     }),
-    mode: 'cors',
+    mode: 'cors'
   })
     .then((response) => response.blob())
     .then((blob) => {

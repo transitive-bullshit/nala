@@ -1,11 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+
 import Carousel from '../../components/Carousel'
-import getResults from '../../utils/cachedImages'
-import cloudinary from '../../utils/cloudinary'
-import getBase64ImageUrl from '../../utils/generateBlurPlaceholder'
-import type { ImageProps } from '../../utils/types'
+import getResults from '../../lib/cachedImages'
+import cloudinary from '../../lib/cloudinary'
+import getBase64ImageUrl from '../../lib/generateBlurPlaceholder'
+import type { ImageProps } from '../../lib/types'
 
 const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter()
@@ -18,10 +19,11 @@ const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
     <>
       <Head>
         <title>Next.js Conf 2022 Photos</title>
-        <meta property="og:image" content={currentPhotoUrl} />
-        <meta name="twitter:image" content={currentPhotoUrl} />
+        <meta property='og:image' content={currentPhotoUrl} />
+        <meta name='twitter:image' content={currentPhotoUrl} />
       </Head>
-      <main className="mx-auto max-w-[1960px] p-4">
+
+      <main className='mx-auto max-w-[1960px] p-4'>
         <Carousel currentPhoto={currentPhoto} index={index} />
       </main>
     </>
@@ -41,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       height: result.height,
       width: result.width,
       public_id: result.public_id,
-      format: result.format,
+      format: result.format
     })
     i++
   }
@@ -53,8 +55,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      currentPhoto: currentPhoto,
-    },
+      currentPhoto: currentPhoto
+    }
   }
 }
 
@@ -72,6 +74,6 @@ export async function getStaticPaths() {
 
   return {
     paths: fullPaths,
-    fallback: false,
+    fallback: false
   }
 }
