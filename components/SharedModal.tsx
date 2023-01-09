@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useSwipeable } from 'react-swipeable'
 
 import * as config from '@/lib/config'
@@ -44,8 +45,6 @@ export default function SharedModal({
   })
 
   const currentImage = images ? images[index] : currentPhoto
-  const w = navigation ? 1280 : 1920
-  const h = (w / currentImage.width) * currentImage.height
 
   return (
     <MotionConfig
@@ -98,13 +97,17 @@ export default function SharedModal({
               {navigation && (
                 <>
                   {index > 0 && (
-                    <button
-                      className='absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none'
-                      style={{ transform: 'translate3d(0, 0, 0)' }}
-                      onClick={() => changePhotoId(index - 1)}
-                    >
-                      <ChevronLeftIcon className='h-6 w-6' />
-                    </button>
+                    <>
+                      <button
+                        className='absolute left-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none'
+                        style={{ transform: 'translate3d(0, 0, 0)' }}
+                        onClick={() => changePhotoId(index - 1)}
+                      >
+                        <Link prefetch={true} href={`/p/${index - 1}`}>
+                          <ChevronLeftIcon className='h-6 w-6' />
+                        </Link>
+                      </button>
+                    </>
                   )}
 
                   {index + 1 < images.length && (
@@ -113,7 +116,9 @@ export default function SharedModal({
                       style={{ transform: 'translate3d(0, 0, 0)' }}
                       onClick={() => changePhotoId(index + 1)}
                     >
-                      <ChevronRightIcon className='h-6 w-6' />
+                      <Link prefetch={true} href={`/p/${index + 1}`}>
+                        <ChevronRightIcon className='h-6 w-6' />
+                      </Link>
                     </button>
                   )}
                 </>

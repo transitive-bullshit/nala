@@ -8,6 +8,7 @@ specifiers:
   '@types/react': 18.0.26
   autoprefixer: ^10.4.13
   cloudinary: ^1.32.0
+  clsx: ^1.2.1
   eslint: ^8.31.0
   eslint-config-next: ^13.0.1
   framer-motion: ^8.2.4
@@ -31,6 +32,7 @@ dependencies:
   '@headlessui/react': 1.7.7_biqbaboplfbrettd7655fr4n2y
   '@heroicons/react': 2.0.13_react@18.2.0
   cloudinary: 1.33.0
+  clsx: 1.2.1
   framer-motion: 8.2.4_biqbaboplfbrettd7655fr4n2y
   imagemin: 8.0.1
   imagemin-jpegtran: 7.0.0
@@ -1254,6 +1256,11 @@ packages:
       proxy-agent: 5.0.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/1.9.3:
