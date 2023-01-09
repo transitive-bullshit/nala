@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://nala.transitivebullsh.it">
+    <img alt="Nala Das Kitten" src="https://nala.transitivebullsh.it/social.jpg">
+  </a>
+</p>
+
 # Digital Memorial for Nala 💕
 
 [![Build Status](https://github.com/transitive-bullshit/nala/actions/workflows/test.yml/badge.svg)](https://github.com/transitive-bullshit/nala/actions/workflows/test.yml) [![MIT License](https://img.shields.io/badge/license-MIT-blue)](https://github.com/transitive-bullshit/nala/blob/main/license) [![Prettier Code Formatting](https://img.shields.io/badge/code_style-prettier-brightgreen.svg)](https://prettier.io)
