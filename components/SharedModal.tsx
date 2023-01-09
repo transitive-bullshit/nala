@@ -45,6 +45,9 @@ export default function SharedModal({
   })
 
   const currentImage = images ? images[index] : currentPhoto
+  const prevImage = images && index > 0 ? images[index - 1] : null
+  const nextImage =
+    images && index < images.length - 1 ? images[index + 1] : null
 
   return (
     <MotionConfig
@@ -107,19 +110,49 @@ export default function SharedModal({
                           <ChevronLeftIcon className='h-6 w-6' />
                         </Link>
                       </button>
+
+                      {prevImage && (
+                        <Image
+                          src={`https://res.cloudinary.com/${
+                            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                          }/image/upload/c_scale,${
+                            navigation ? 'w_1280' : 'w_1920'
+                          }/${prevImage.public_id}.${prevImage.format}`}
+                          fill
+                          className='absolute hidden w-0 h-0'
+                          loading='eager'
+                          alt='preloading prev image'
+                        />
+                      )}
                     </>
                   )}
 
                   {index + 1 < images.length && (
-                    <button
-                      className='absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none'
-                      style={{ transform: 'translate3d(0, 0, 0)' }}
-                      onClick={() => changePhotoId(index + 1)}
-                    >
-                      <Link prefetch={true} href={`/p/${index + 1}`}>
-                        <ChevronRightIcon className='h-6 w-6' />
-                      </Link>
-                    </button>
+                    <>
+                      <button
+                        className='absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none'
+                        style={{ transform: 'translate3d(0, 0, 0)' }}
+                        onClick={() => changePhotoId(index + 1)}
+                      >
+                        <Link prefetch={true} href={`/p/${index + 1}`}>
+                          <ChevronRightIcon className='h-6 w-6' />
+                        </Link>
+                      </button>
+
+                      {nextImage && (
+                        <Image
+                          src={`https://res.cloudinary.com/${
+                            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                          }/image/upload/c_scale,${
+                            navigation ? 'w_1280' : 'w_1920'
+                          }/${nextImage.public_id}.${nextImage.format}`}
+                          fill
+                          className='absolute hidden w-0 h-0'
+                          loading='eager'
+                          alt='preloading next image'
+                        />
+                      )}
+                    </>
                   )}
                 </>
               )}
