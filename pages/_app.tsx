@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import type { AppProps } from 'next/app'
 
 import { bootstrap } from '@/lib/bootstrap'
@@ -9,5 +10,11 @@ if (!isServer) {
 }
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Component {...pageProps} />
+
+      <Analytics />
+    </>
+  )
 }

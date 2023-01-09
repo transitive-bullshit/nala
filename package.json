@@ -17,6 +17,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "@vercel/analytics": "^0.1.6",
     "cloudinary": "^1.32.0",
     "clsx": "^1.2.1",
     "framer-motion": "^8.2.4",
