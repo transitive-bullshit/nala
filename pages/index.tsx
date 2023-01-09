@@ -49,7 +49,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
 
         <div className='columns-1 gap-4 sm:columns-2 xl:columns-3 2xl:columns-4'>
           <div className='relative mb-5 flex flex-col items-center justify-center gap-4 overflow-hidden rounded-lg bg-white/10 p-8 text-center text-white shadow-highlight after:pointer-events-none after:absolute after:content after:inset-0 after:rounded-lg after:shadow-highlight'>
-            <h1 className='my-4 text-base font-bold uppercase tracking-widest mt-0'>
+            <h1 className='text-base font-bold uppercase tracking-widest mt-0'>
               Nala 💕
             </h1>
 
