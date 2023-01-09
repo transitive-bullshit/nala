@@ -44,6 +44,7 @@ export default function Carousel({
           priority={true}
         />
       </button>
+
       <SharedModal
         index={index}
         changePhotoId={changePhotoId}

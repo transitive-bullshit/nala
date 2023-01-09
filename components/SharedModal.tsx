@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 
+import * as config from '@/lib/config'
 import { variants } from '@/lib/animationVariants'
 import downloadPhoto from '@/lib/downloadPhoto'
 import { range } from '@/lib/range'
@@ -29,7 +30,7 @@ export default function SharedModal({
 }: SharedModalProps) {
   const [loaded, setLoaded] = useState(false)
 
-  let filteredImages = images?.filter((img: ImageProps) =>
+  const filteredImages = images?.filter((img: ImageProps) =>
     range(index - 15, index + 15).includes(img.id)
   )
 
@@ -39,7 +40,7 @@ export default function SharedModal({
     trackMouse: true
   })
 
-  let currentImage = images ? images[index] : currentPhoto
+  const currentImage = images ? images[index] : currentPhoto
 
   return (
     <MotionConfig
@@ -74,7 +75,7 @@ export default function SharedModal({
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
                   priority
-                  alt='Next.js Conf image'
+                  alt={config.alt}
                   onLoadingComplete={() => setLoaded(true)}
                 />
               </motion.div>
@@ -124,7 +125,7 @@ export default function SharedModal({
                   </a>
                 ) : (
                   <a
-                    href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20pic%20from%20Next.js%20Conf!%0A%0Ahttps://nextjsconf-pics.vercel.app/p/${index}`}
+                    href={`https://twitter.com/intent/tweet?text=${config.prodUrl}/p/${index}`}
                     className='rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white'
                     target='_blank'
                     title='Open fullsize version'
@@ -194,7 +195,7 @@ export default function SharedModal({
                       } relative inline-block w-full shrink-0 transform-gpu overflow-hidden focus:outline-none`}
                     >
                       <Image
-                        alt='small photos on the bottom'
+                        alt={`${config.alt} preview`}
                         width={180}
                         height={120}
                         className={`${

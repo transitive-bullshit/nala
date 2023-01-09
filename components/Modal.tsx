@@ -15,11 +15,11 @@ export default function Modal({
   images: ImageProps[]
   onClose?: () => void
 }) {
-  let overlayRef = useRef()
+  const overlayRef = useRef()
   const router = useRouter()
 
   const { photoId } = router.query
-  let index = Number(photoId)
+  const index = Number(photoId)
 
   const [direction, setDirection] = useState(0)
   const [curIndex, setCurIndex] = useState(index)
