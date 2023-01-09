@@ -1,27 +1,23 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 
-import Carousel from '../../components/Carousel'
-import getResults from '../../lib/cachedImages'
-import cloudinary from '../../lib/cloudinary'
-import getBase64ImageUrl from '../../lib/generateBlurPlaceholder'
-import type { ImageProps } from '../../lib/types'
+import Carousel from '@/components/Carousel'
+import { PageHead } from '@/components/PageHead'
+import getResults from '@/lib/cachedImages'
+import cloudinary from '@/lib/cloudinary'
+import getBase64ImageUrl from '@/lib/generateBlurPlaceholder'
+import type { ImageProps } from '@/lib/types'
 
 const Home: NextPage = ({ currentPhoto }: { currentPhoto: ImageProps }) => {
   const router = useRouter()
   const { photoId } = router.query
-  let index = Number(photoId)
+  const index = Number(photoId)
 
   const currentPhotoUrl = `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_2560/${currentPhoto.public_id}.${currentPhoto.format}`
 
   return (
     <>
-      <Head>
-        <title>Next.js Conf 2022 Photos</title>
-        <meta property='og:image' content={currentPhotoUrl} />
-        <meta name='twitter:image' content={currentPhotoUrl} />
-      </Head>
+      <PageHead imageUrl={currentPhotoUrl} />
 
       <main className='mx-auto max-w-[1960px] p-4'>
         <Carousel currentPhoto={currentPhoto} index={index} />

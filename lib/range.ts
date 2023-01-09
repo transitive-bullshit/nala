@@ -1,5 +1,5 @@
 export const range = (start: number, end: number) => {
-  let output = []
+  const output = []
   if (typeof end === 'undefined') {
     end = start
     start = 0

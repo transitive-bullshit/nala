@@ -11,10 +11,11 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 
-import { variants } from '../lib/animationVariants'
-import downloadPhoto from '../lib/downloadPhoto'
-import { range } from '../lib/range'
-import type { ImageProps, SharedModalProps } from '../lib/types'
+import { variants } from '@/lib/animationVariants'
+import downloadPhoto from '@/lib/downloadPhoto'
+import { range } from '@/lib/range'
+import type { ImageProps, SharedModalProps } from '@/lib/types'
+
 import Twitter from './Icons/Twitter'
 
 export default function SharedModal({
@@ -97,6 +98,7 @@ export default function SharedModal({
                       <ChevronLeftIcon className='h-6 w-6' />
                     </button>
                   )}
+
                   {index + 1 < images.length && (
                     <button
                       className='absolute right-3 top-[calc(50%-16px)] rounded-full bg-black/50 p-3 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white focus:outline-none'
@@ -108,6 +110,7 @@ export default function SharedModal({
                   )}
                 </>
               )}
+
               <div className='absolute top-0 right-0 flex items-center gap-2 p-3 text-white'>
                 {navigation ? (
                   <a
@@ -130,6 +133,7 @@ export default function SharedModal({
                     <Twitter className='h-5 w-5' />
                   </a>
                 )}
+
                 <button
                   onClick={() =>
                     downloadPhoto(
@@ -143,6 +147,7 @@ export default function SharedModal({
                   <ArrowDownTrayIcon className='h-5 w-5' />
                 </button>
               </div>
+
               <div className='absolute top-0 left-0 flex items-center gap-2 p-3 text-white'>
                 <button
                   onClick={() => closeModal()}
@@ -157,6 +162,7 @@ export default function SharedModal({
               </div>
             </div>
           )}
+
           {/* Bottom Nav bar */}
           {navigation && (
             <div className='fixed inset-x-0 bottom-0 z-40 overflow-hidden bg-gradient-to-b from-black/0 to-black/60'>

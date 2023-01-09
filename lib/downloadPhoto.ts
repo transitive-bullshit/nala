@@ -7,7 +7,7 @@ function forceDownload(blobUrl: string, filename: string) {
   a.remove()
 }
 
-export default function downloadPhoto(url: string, filename: string) {
+export default function downloadPhoto(url: string, filename?: string) {
   if (!filename) filename = url.split('\\').pop().split('/').pop()
   fetch(url, {
     headers: new Headers({
@@ -17,7 +17,7 @@ export default function downloadPhoto(url: string, filename: string) {
   })
     .then((response) => response.blob())
     .then((blob) => {
-      let blobUrl = window.URL.createObjectURL(blob)
+      const blobUrl = window.URL.createObjectURL(blob)
       forceDownload(blobUrl, filename)
     })
     .catch((e) => console.error(e))

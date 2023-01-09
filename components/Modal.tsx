@@ -4,7 +4,8 @@ import { useRouter } from 'next/router'
 import { useRef, useState } from 'react'
 import useKeypress from 'react-use-keypress'
 
-import type { ImageProps } from '../lib/types'
+import type { ImageProps } from '@/lib/types'
+
 import SharedModal from './SharedModal'
 
 export default function Modal({
@@ -34,7 +35,9 @@ export default function Modal({
     } else {
       setDirection(-1)
     }
+
     setCurIndex(newVal)
+
     router.push(
       {
         query: { photoId: newVal }
@@ -72,6 +75,7 @@ export default function Modal({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       />
+
       <SharedModal
         index={curIndex}
         direction={direction}

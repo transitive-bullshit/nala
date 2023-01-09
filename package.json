@@ -1,20 +1,29 @@
 {
+  "name": "nala",
+  "version": "0.1.0",
   "private": true,
+  "description": "In loving memory of Nala Das Kitten; 2010 - 2023.",
+  "author": "Travis Fischer <travis@transitivebullsh.it>",
+  "repository": "transitive-bullshit/nala",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "test": "run-p test:*",
+    "test:lint": "next lint",
+    "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "cloudinary": "^1.32.0",
     "eslint-config-next": "^13.0.1",
-    "framer-motion": "^7.6.4",
+    "framer-motion": "^8.2.4",
     "imagemin": "^8.0.1",
     "imagemin-jpegtran": "^7.0.0",
     "next": "latest",
+    "p-map": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hooks-global-state": "^2.0.0",
@@ -23,13 +32,15 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
     "autoprefixer": "^10.4.13",
+    "eslint": "^8.31.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.18",
     "prettier": "^2.8.2",
-    "prettier-plugin-tailwindcss": "^0.1.13",
+    "prettier-plugin-tailwindcss": "^0.2.1",
     "tailwindcss": "^3.2.1",
-    "typescript": "4.8.4"
+    "typescript": "4.9.4"
   }
 }

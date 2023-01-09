@@ -26,6 +26,7 @@ class MyDocument extends Document {
 
         <body className='bg-black antialiased'>
           <Main />
+
           <NextScript />
         </body>
       </Html>

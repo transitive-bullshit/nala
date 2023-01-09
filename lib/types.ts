@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export interface ImageProps {
   id: number
   height: string
