@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useKeypress from 'react-use-keypress'
@@ -17,14 +18,14 @@ export default function Carousel({
   const router = useRouter()
   const [, setLastViewedPhoto] = useLastViewedPhoto()
 
-  function closeModal() {
+  const closeModal = React.useCallback(() => {
     setLastViewedPhoto(currentPhoto.id)
     router.push('/', undefined, { shallow: true })
-  }
+  }, [currentPhoto.id, router, setLastViewedPhoto])
 
-  function changePhotoId(newVal: number) {
+  const changePhotoId = React.useCallback((newVal: number) => {
     return newVal
-  }
+  }, [])
 
   useKeypress('Escape', () => {
     closeModal()
@@ -47,8 +48,8 @@ export default function Carousel({
 
       <SharedModal
         index={index}
-        changePhotoId={changePhotoId}
         currentPhoto={currentPhoto}
+        changePhotoId={changePhotoId}
         closeModal={closeModal}
         navigation={false}
       />

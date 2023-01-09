@@ -1,3 +1,4 @@
+import * as React from 'react'
 import {
   ArrowDownTrayIcon,
   ArrowTopRightOnSquareIcon,
@@ -8,13 +9,11 @@ import {
 } from '@heroicons/react/24/outline'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
 import Image from 'next/image'
-import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 
 import * as config from '@/lib/config'
 import { variants } from '@/lib/animationVariants'
 import downloadPhoto from '@/lib/downloadPhoto'
-import { range } from '@/lib/range'
 import type { ImageProps, SharedModalProps } from '@/lib/types'
 
 import Twitter from './Icons/Twitter'
@@ -28,10 +27,14 @@ export default function SharedModal({
   currentPhoto,
   direction
 }: SharedModalProps) {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = React.useState(false)
 
-  const filteredImages = images?.filter((img: ImageProps) =>
-    range(index - 15, index + 15).includes(img.id)
+  const filteredImages = React.useMemo(
+    () =>
+      images?.filter(
+        (img: ImageProps) => img.id >= index - 15 && img.id <= index + 15
+      ),
+    [images, index]
   )
 
   const handlers = useSwipeable({
@@ -74,6 +77,8 @@ export default function SharedModal({
                   }.${currentImage.format}`}
                   width={navigation ? 1280 : 1920}
                   height={navigation ? 853 : 1280}
+                  placeholder='blur'
+                  blurDataURL={currentImage.blurDataUrl}
                   priority
                   alt={config.alt}
                   onLoadingComplete={() => setLoaded(true)}
@@ -139,7 +144,7 @@ export default function SharedModal({
                   onClick={() =>
                     downloadPhoto(
                       `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/${currentImage.public_id}.${currentImage.format}`,
-                      `${index}.jpg`
+                      `${config.alt} ${index}.${currentImage.format}`
                     )
                   }
                   className='rounded-full bg-black/50 p-2 text-white/75 backdrop-blur-lg transition hover:bg-black/75 hover:text-white'
