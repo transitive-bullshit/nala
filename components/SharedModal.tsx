@@ -107,23 +107,27 @@ export default function SharedModal({
                         style={{ transform: 'translate3d(0, 0, 0)' }}
                         onClick={() => changePhotoId(index - 1)}
                       >
-                        <Link prefetch={true} href={`/p/${index - 1}`}>
-                          <ChevronLeftIcon className='h-6 w-6' />
-                        </Link>
+                        <ChevronLeftIcon className='h-6 w-6' />
                       </button>
 
                       {prevImage && (
-                        <Image
-                          src={`https://res.cloudinary.com/${
-                            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                          }/image/upload/c_scale,${
-                            navigation ? 'w_1280' : 'w_1920'
-                          }/${prevImage.public_id}.${prevImage.format}`}
-                          fill
+                        <Link
+                          prefetch={true}
+                          href={`/p/${index - 1}`}
                           className='absolute hidden w-0 h-0'
-                          loading='eager'
-                          alt='preloading prev image'
-                        />
+                        >
+                          <Image
+                            src={`https://res.cloudinary.com/${
+                              process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                            }/image/upload/c_scale,${
+                              navigation ? 'w_1280' : 'w_1920'
+                            }/${prevImage.public_id}.${prevImage.format}`}
+                            fill
+                            className='absolute hidden w-0 h-0'
+                            loading='eager'
+                            alt='preloading prev image'
+                          />
+                        </Link>
                       )}
                     </>
                   )}
@@ -135,23 +139,27 @@ export default function SharedModal({
                         style={{ transform: 'translate3d(0, 0, 0)' }}
                         onClick={() => changePhotoId(index + 1)}
                       >
-                        <Link prefetch={true} href={`/p/${index + 1}`}>
-                          <ChevronRightIcon className='h-6 w-6' />
-                        </Link>
+                        <ChevronRightIcon className='h-6 w-6' />
                       </button>
 
                       {nextImage && (
-                        <Image
-                          src={`https://res.cloudinary.com/${
-                            process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
-                          }/image/upload/c_scale,${
-                            navigation ? 'w_1280' : 'w_1920'
-                          }/${nextImage.public_id}.${nextImage.format}`}
-                          fill
+                        <Link
+                          prefetch={true}
+                          href={`/p/${index + 1}`}
                           className='absolute hidden w-0 h-0'
-                          loading='eager'
-                          alt='preloading next image'
-                        />
+                        >
+                          <Image
+                            src={`https://res.cloudinary.com/${
+                              process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+                            }/image/upload/c_scale,${
+                              navigation ? 'w_1280' : 'w_1920'
+                            }/${nextImage.public_id}.${nextImage.format}`}
+                            fill
+                            className='absolute hidden w-0 h-0'
+                            loading='eager'
+                            alt='preloading next image'
+                          />
+                        </Link>
                       )}
                     </>
                   )}
