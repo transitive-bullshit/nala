@@ -41,8 +41,7 @@ export default function SharedModal({
   const handlers = useSwipeable({
     onSwipedLeft: () => index < images.length - 1 && changePhotoId(index + 1),
     onSwipedRight: () => index > 0 && changePhotoId(index - 1),
-    onSwipedDown: () => closeModal(),
-    trackMouse: true
+    onSwipedDown: () => closeModal()
   })
 
   const currentImage = images ? images[index] : currentPhoto
