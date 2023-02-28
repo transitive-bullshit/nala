@@ -80,6 +80,7 @@ export default function SharedModal({
                     currentImage.public_id
                   }.${currentImage.format}`}
                   fill
+                  unoptimized
                   className='object-contain'
                   placeholder='blur'
                   blurDataURL={currentImage.blurDataUrl}
@@ -122,6 +123,7 @@ export default function SharedModal({
                               navigation ? 'w_1280' : 'w_1920'
                             }/${prevImage.public_id}.${prevImage.format}`}
                             fill
+                            unoptimized
                             className='absolute hidden w-0 h-0'
                             loading='eager'
                             alt='preloading prev image'
@@ -154,6 +156,7 @@ export default function SharedModal({
                               navigation ? 'w_1280' : 'w_1920'
                             }/${nextImage.public_id}.${nextImage.format}`}
                             fill
+                            unoptimized
                             className='absolute hidden w-0 h-0'
                             loading='eager'
                             alt='preloading next image'
@@ -257,6 +260,7 @@ export default function SharedModal({
                             : 'brightness-50 contrast-125 hover:brightness-75'
                         } h-full transform object-cover transition`}
                         src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_180/${public_id}.${format}`}
+                        unoptimized
                       />
                     </motion.button>
                   ))}
